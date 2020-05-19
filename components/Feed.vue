@@ -9,7 +9,7 @@
     <div class="post" v-for="(post, i) of pages">
       <router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
       <div>
-        <span class="user-info"><img class="avatar" :src="post.creator.avatar" />{{post.creator.email.replace(/@.*$/, '')}}</span>
+        <span class="user-info" v-if="post.creator"><img class="avatar" :src="post.creator.avatar" />{{post.creator.email.replace(/@.*$/, '')}}</span>
         <span class="last-updated">{{ diaplayTime(post.lastUpdated) }}</span>
         <span class="tag" v-for="t in post.frontmatter.tags">
           <em class="text-item active" v-if="t.toLocaleLowerCase()===tag.toLocaleLowerCase()">{{t.toLocaleLowerCase()}}</em>
