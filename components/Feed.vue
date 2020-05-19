@@ -11,14 +11,14 @@
       <div>
         <span class="user-info" v-if="post.creator"><img class="avatar" :src="post.creator.avatar" />{{post.creator.email.replace(/@.*$/, '')}}</span>
         <span class="last-updated">{{ diaplayTime(post.lastUpdated) }}</span>
+      </div>
+      <div class="post-content" v-html="post.excerpt"></div>
+      <div class="post-actions">
         <span class="tag" v-for="t in post.frontmatter.tags">
           <em class="text-item active" v-if="t.toLocaleLowerCase()===tag.toLocaleLowerCase()">{{t.toLocaleLowerCase()}}</em>
           <em class="text-item" v-else @click="$emit('turnTo', t.toLocaleLowerCase())">{{t.toLocaleLowerCase()}}</em>
         </span>
-      </div>
-      <div class="post-content" v-html="post.excerpt"></div>
-      <div class="post-actions">
-      <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
+        <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
       </div>
     </div>
 
@@ -157,8 +157,8 @@ export default {
     -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
   .post-actions
-    display: flex;
-    justify-content: flex-end;
+    .tag
+      line-height: 34px;
   .post-title
     font-size: 36px;
     font-weight: 600;
@@ -168,6 +168,7 @@ export default {
     font-size: 14px;
     line-height: 28px;
   .continue-reading
+    float: right;
     padding: 6px;
     border-radius: 2px;
     background-color: white;
