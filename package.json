@@ -1,0 +1,19 @@
+{
+  "name": "vuepress-theme-feed",
+  "version": "1.0.0",
+  "description": "theme feed for vuepress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xieyx/vuepress-theme-feed.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xieyx/vuepress-theme-feed/issues"
+  },
+  "homepage": "https://github.com/xieyx/vuepress-theme-feed#readme"
+}
