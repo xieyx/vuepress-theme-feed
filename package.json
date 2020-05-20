@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-feed",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "theme feed for vuepress",
   "main": "index.js",
   "repository": {
