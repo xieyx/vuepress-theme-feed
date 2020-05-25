@@ -1,9 +1,24 @@
 <template>
     <footer class="footer">
-        <div class="copyright">Copyright &copy; 2019-present yanxin1</div>
-        <div class="license">Based on <a href="//vuepress.vuejs.org">VuePress</a></div>
+        <div class="copyright">Copyright &copy; {{ footer.copyright.since && footer.copyright.since < nowYear ? footer.copyright.since + '-' : '' }}{{nowYear}} {{footer.copyright.author}}</div>
+        <div class="license" v-if="footer.license" v-html="footer.license"></div>
     </footer>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      nowYear: new Date().getFullYear()
+    };
+  },
+  computed: {
+    footer() {
+      return this.$themeConfig.footer;
+    }
+  }
+}
+</script>
 
 <style scoped>
 .footer {

@@ -10,15 +10,15 @@
       <router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
       <div>
         <span class="user-info" v-if="post.creator"><img class="avatar" :src="post.creator.avatar" />{{post.creator.email.replace(/@.*$/, '')}}</span>
-        <span class="last-updated">{{ diaplayTime(post.lastUpdated) }}</span>
+        <span class="last-updated">{{ themeConfig.formatDate ? diaplayTime(post.lastUpdated) : post.lastUpdated }}</span>
       </div>
-      <div class="post-content" v-html="post.excerpt"></div>
+      <div class="post-content" v-if="post.excerpt" v-html="post.excerpt.replace(/^<h1\b.*?<\/h1>/, '')"></div>
       <div class="post-actions">
         <span class="tag" v-for="t in post.frontmatter.tags">
           <em class="text-item active" v-if="t.toLocaleLowerCase()===tag.toLocaleLowerCase()">{{t.toLocaleLowerCase()}}</em>
           <em class="text-item" v-else @click="$emit('turnTo', t.toLocaleLowerCase())">{{t.toLocaleLowerCase()}}</em>
         </span>
-        <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
+        <router-link class="continue-reading" :to="post.path">{{ themeConfig.readMore || themeConfig.locales[localePath].readMore || 'Read More' }}</router-link>
       </div>
     </div>
 
@@ -33,7 +33,25 @@ export default {
   name: 'Feed',
 
   components: { Footer },
-
+  computed: {
+    themeConfig() {
+      return this.$site.themeConfig;
+    },
+    localePath() {
+      return this.$localePath;
+    },
+    formatDateLabel() {
+      return this.$site.themeConfig.formatDateLabel || this.$site.themeConfig.locales[this.$localePath].formatDateLabel || {
+        yearAgo: ' year ago',
+        monthAgo: ' month ago',
+        weekAgo: ' week ago',
+        dayAgo: ' day ago',
+        hourAgo: ' hour ago',
+        minuteAgo: ' minute ago',
+        secondAgo: ' second ago',
+      };
+    }
+  },
   data() {
     return {
       allTags: {},
@@ -68,13 +86,17 @@ export default {
       let allTags = [];
 
       let p = this.$site.pages.filter(v => {
-        if (v.frontmatter.tags) {
+        // 路径前缀判断
+        if (this.$localePath === '/' && v.path.split('/').length === 4) {
+          return false;
+        }
+        if (v.path.indexOf(this.$localePath) === 0 && v.frontmatter.tags) {
           allTags.push(...v.frontmatter.tags);
           if (typeof this.tag === 'string' && this.tag !== '') {
             return v.frontmatter.tags.some(t => t.toLocaleLowerCase() === this.tag.toLocaleLowerCase());
           }
         }
-        if (v.title && v.path.includes(this.$page.path)) {
+        if (v.title && v.path.indexOf(this.$page.path) === 0) {
           return v;
         }
       })
@@ -103,21 +125,21 @@ export default {
       const diffMinute = diffValue / minute;
       const diffYear = diffValue / year;
       if (diffValue < 0) {
-        return "刚刚发表";
+        return this.formatDateLabel.secondAgo;
       } else if (diffYear > 1) {
-        return parseInt(diffYear) + "年前";
+        return parseInt(diffYear) + this.formatDateLabel.yearAgo;
       } else if (diffMonth > 1) {
-        return parseInt(diffMonth) + "月前";
+        return parseInt(diffMonth) + this.formatDateLabel.monthAgo;
       } else if (diffWeek > 1) {
-        return parseInt(diffWeek) + "周前";
+        return parseInt(diffWeek) + this.formatDateLabel.weekAgo;
       } else if (diffDay > 1) {
-        return parseInt(diffDay) + "天前";
+        return parseInt(diffDay) + this.formatDateLabel.dayAgo;
       } else if (diffHour > 1) {
-        return parseInt(diffHour) + "小时前";
+        return parseInt(diffHour) + this.formatDateLabel.hourAgo;
       } else if (diffMinute > 1) {
-        return parseInt(diffMinute) + "分钟前";
+        return parseInt(diffMinute) + this.formatDateLabel.minuteAgo;
       } else {
-        return "刚刚发表";
+        return this.formatDateLabel.secondAgo;
       }
     }
   },

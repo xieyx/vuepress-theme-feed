@@ -4,16 +4,16 @@
 
     <Content class="theme-default-content" />
 
-    <div class="controbutor-list page-edit" v-if="this.$page.contributors">
-      <h2>文档贡献者</h2>
-      <span class="user-info" v-for="t in this.$page.contributors">
+    <div class="controbutor-list page-edit" v-if="contributors">
+      <h2>{{ themeConfig.pageContributors || themeConfig.locales[localePath].pageContributors || 'Contributors' }}</h2>
+      <span class="user-info" v-for="t in contributors">
         <a target="_blank" :href="t.email.replace(/^(\w+)@.*$/, `${domain}/$1`)"><img class="avatar" :src="t.avatar" :alt="t.email" :title="t.email" /></a>
       </span>
     </div>
 
-    <div class="tag-list page-edit" v-if="this.$page.frontmatter.tags">
-      <h2>标签</h2>
-      <span class="tag" v-for="t in this.$page.frontmatter.tags">
+    <div class="tag-list page-edit" v-if="frontmatter.tags">
+      <h2>{{ themeConfig.pageTags || themeConfig.locales[localePath].pageTags || 'Tags' }}</h2>
+      <span class="tag" v-for="t in frontmatter.tags">
         <em class="text-item" @click="$emit('turnTo', t.toLocaleLowerCase())">{{t.toLocaleLowerCase()}}</em>
       </span>
     </div>
@@ -32,7 +32,24 @@ import PageNav from '@parent-theme/components/PageNav.vue'
 
 export default {
   components: { PageEdit, PageNav },
-  props: ['sidebarItems', 'domain']
+  props: ['sidebarItems'],
+  computed: {
+    domain() {
+      return this.$site.themeConfig.repo.replace(/^(https?:\/\/[^/]+).*$/, '$1');
+    },
+    frontmatter() {
+      return this.$page.frontmatter;
+    },
+    contributors() {
+      return this.$page.contributors;
+    },
+    themeConfig() {
+      return this.$site.themeConfig
+    },
+    localePath() {
+      return this.$localePath;
+    }
+  }
 }
 </script>
 

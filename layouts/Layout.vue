@@ -35,7 +35,6 @@
       v-else
       :sidebar-items="sidebarItems"
       @turnTo="tagClick"
-      :domain="domain"
     >
       <template #top>
         <slot name="page-top" />
@@ -70,7 +69,6 @@ export default {
     return {
       isSidebarOpen: false,
       tag: "",
-      domain: "",
     }
   },
 
@@ -127,7 +125,6 @@ export default {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false
     })
-    this.domain = this.$site.themeConfig.repo.replace(/^(https?:\/\/[^/]+).*$/, '$1')
   },
 
   created() {
@@ -162,7 +159,7 @@ export default {
 
     showFeed(route) {
       this.tag = '';
-      if (route.path === '/'+this.$site.themeConfig.tags+'/') {
+      if (route.path.replace(new RegExp('^' + this.$localePath), '/') === '/'+this.$site.themeConfig.tags+'/') {
         this.tag = this.$router.history.current.query.tag || true;
       }
       if (this.$page.frontmatter.feed) {
