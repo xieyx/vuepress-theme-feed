@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-feed",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "theme feed for vuepress",
   "main": "index.js",
   "repository": {
@@ -12,5 +12,12 @@
   "bugs": {
     "url": "https://github.com/xieyx/vuepress-theme-feed/issues"
   },
-  "homepage": "https://github.com/xieyx/vuepress-theme-feed#readme"
+  "homepage": "https://github.com/xieyx/vuepress-theme-feed#readme",
+  "scripts": {
+    "docs:dev": "./node_modules/vuepress/cli.js dev docs --temp .temp",
+    "docs:build": "./node_modules/vuepress/cli.js build docs --temp .temp"
+  },
+  "devDependencies": {
+    "vuepress": "^1.5.0"
+  }
 }
