@@ -1,4 +1,5 @@
 module.exports = ctx => ({
+  base: '/vuepress-theme-feed.github.io/',
   locales: {
     '/': {
       lang: 'en-US',
