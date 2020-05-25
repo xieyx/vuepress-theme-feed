@@ -8,7 +8,7 @@ extend [@vuepress/theme-default](https://www.npmjs.com/package/@vuepress/theme-d
 
 ## Sites
 
-- [Documentation](https://vuepress-theme-feed.github.io) - clone this repo and run `yarn && yarn docs:dev`
+- [Documentation](https://xieyx.github.io/vuepress-theme-feed) - clone this repo and run `yarn && yarn docs:dev`
 
 ## Install
 
