@@ -3,7 +3,7 @@
 [![NPM downloads](https://badgen.net/npm/dt/vuepress-theme-feed)](https://npmjs.com/package/vuepress-theme-feed)
 [![NPM LICENSE](https://badgen.net/npm/license/vuepress-theme-feed)](https://github.com/xieyx/vuepress-theme-feed/blob/master/LICENSE)
 
-extend @vuepress/theme-default
+extend [@vuepress/theme-default](https://www.npmjs.com/package/@vuepress/theme-default)
 
 ## Sites
 
