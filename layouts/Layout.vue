@@ -170,7 +170,7 @@ export default {
     tagClick(tag) {
       // this.tag = tag;
       if (this.$site.themeConfig.tags) {
-        this.$router.push("/" + this.$site.themeConfig.tags + "/?tag=" + tag);
+        this.$router.push(this.$localePath + this.$site.themeConfig.tags + "/?tag=" + tag);
       }
     }
   },
