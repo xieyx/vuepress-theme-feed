@@ -1,5 +1,5 @@
 # vuepress-theme-feed
-[![NPM build](https://badgen.net/travis/xieyx/vuepress-theme-feed)](https://github.com/xieyx/vuepress-theme-feed)
+[![NPM build](https://badgen.net/travis/xieyx/vuepress-theme-feed)](https://travis-ci.com/github/xieyx/vuepress-theme-feed)
 [![NPM version](https://badgen.net/npm/v/vuepress-theme-feed)](https://npmjs.com/package/vuepress-theme-feed)
 [![NPM downloads](https://badgen.net/npm/dt/vuepress-theme-feed)](https://npmjs.com/package/vuepress-theme-feed)
 [![NPM LICENSE](https://badgen.net/npm/license/vuepress-theme-feed)](https://github.com/xieyx/vuepress-theme-feed/blob/master/LICENSE)
