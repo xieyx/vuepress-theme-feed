@@ -5,14 +5,14 @@
     <Content class="theme-default-content" />
 
     <div class="controbutor-list page-edit" v-if="contributors">
-      <h2>{{ themeConfig.pageContributors || themeConfig.locales[localePath].pageContributors || 'Contributors' }}</h2>
+      <h2>{{ themelocaleConfig.pageContributors || 'Contributors' }}</h2>
       <span class="user-info" v-for="t in contributors">
         <a target="_blank" :href="t.email.replace(/^(\w+)@.*$/, `${domain}/$1`)"><img class="avatar" :src="t.avatar" :alt="t.email" :title="t.email" /></a>
       </span>
     </div>
 
     <div class="tag-list page-edit" v-if="frontmatter.tags">
-      <h2>{{ themeConfig.pageTags || themeConfig.locales[localePath].pageTags || 'Tags' }}</h2>
+      <h2>{{ themelocaleConfig.pageTags || 'Tags' }}</h2>
       <span class="tag" v-for="t in frontmatter.tags">
         <em class="text-item" @click="$emit('turnTo', t.toLocaleLowerCase())">{{t.toLocaleLowerCase()}}</em>
       </span>
@@ -43,11 +43,8 @@ export default {
     contributors() {
       return this.$page.contributors;
     },
-    themeConfig() {
-      return this.$site.themeConfig
-    },
-    localePath() {
-      return this.$localePath;
+    themelocaleConfig() {
+      return this.$themeLocaleConfig
     }
   }
 }

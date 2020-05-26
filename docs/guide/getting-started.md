@@ -1,9 +1,3 @@
----
-tags:
-  - foo
-  - bar
----
-
 # Getting Started
 
 ## Install
@@ -32,15 +26,5 @@ To use it, specify `feed: true` in your `README.md`
 ```yml
 ---
 feed: true
----
-```
-
-## Set tag
-To use it, specify `tags` in your page. Then it well rendered after the content section.
-```yml
----
-tags:
-  - foo
-  - bar
 ---
 ```

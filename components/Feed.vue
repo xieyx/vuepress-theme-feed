@@ -18,7 +18,7 @@
           <em class="text-item active" v-if="t.toLocaleLowerCase()===tag.toLocaleLowerCase()">{{t.toLocaleLowerCase()}}</em>
           <em class="text-item" v-else @click="$emit('turnTo', t.toLocaleLowerCase())">{{t.toLocaleLowerCase()}}</em>
         </span>
-        <router-link class="continue-reading" :to="post.path">{{ themeConfig.readMore || themeConfig.locales[localePath].readMore || 'Read More' }}</router-link>
+        <router-link class="continue-reading" :to="post.path">{{ themeLocaleConfig.readMore || 'Read More' }}</router-link>
       </div>
     </div>
 
@@ -37,11 +37,14 @@ export default {
     themeConfig() {
       return this.$site.themeConfig;
     },
+    themeLocaleConfig() {
+      return this.$themeLocaleConfig;
+    },
     localePath() {
       return this.$localePath;
     },
     formatDateLabel() {
-      return this.$site.themeConfig.formatDateLabel || this.$site.themeConfig.locales[this.$localePath].formatDateLabel || {
+      return this.$themeLocaleConfig.formatDateLabel || {
         yearAgo: ' year ago',
         monthAgo: ' month ago',
         weekAgo: ' week ago',

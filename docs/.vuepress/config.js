@@ -30,8 +30,8 @@ module.exports = ctx => ({
         nav: [
           { text: 'Guide', link: '/guide/' },
           { text: 'Config', link: '/config/' },
-          { text: 'Tags', link: '/tags/' },
         ],
+        tagsLabel: 'Tags',
         readMore: 'Read More...',
         pageTags: 'Tags',
         formatDateLabel: {
@@ -52,8 +52,8 @@ module.exports = ctx => ({
         nav: [
           { text: '指南', link: '/zh/guide/' },
           { text: '配置', link: '/zh/config/' },
-          { text: '标签云', link: '/zh/tags/' },
         ],
+        tagsLabel: '标签云',
         readMore: '继续阅读 »',
         pageTags: '标签',
         formatDateLabel: {

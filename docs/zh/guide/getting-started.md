@@ -1,9 +1,3 @@
----
-tags:
-  - foo
-  - bar
----
-
 # 快速上手
 
 ## 安装
@@ -32,15 +26,5 @@ module.exports = {
 ```yml
 ---
 feed: true
----
-```
-
-## Set tag
-在页面中指明tags, 将展示在页面内容后
-```yml
----
-tags:
-  - foo
-  - bar
 ---
 ```
