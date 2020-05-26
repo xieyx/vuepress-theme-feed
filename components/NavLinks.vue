@@ -78,9 +78,9 @@ export default {
             return { text, link }
           })
         }
-        return [...this.userNav, this.tagsNav, languageDropdown]
+        return [...this.userNav, ...this.tagsNav, languageDropdown]
       }
-      return this.userNav
+      return [...this.userNav, ...this.tagsNav]
     },
 
     userLinks () {
@@ -121,9 +121,9 @@ export default {
 
     tagsNav () {
       if (typeof this.$site.themeConfig.tags !== 'string') {
-        return
+        return []
       }
-      return { text: this.$themeLocaleConfig.tagsLabel || 'Tags', link: this.$localePath + this.$site.themeConfig.tags +'/' };
+      return [{ text: this.$themeLocaleConfig.tagsLabel || 'Tags', link: this.$localePath + this.$site.themeConfig.tags +'/' }];
     }
   }
 }
