@@ -15,7 +15,7 @@ module.exports = ctx => ({
   evergreen: () => !ctx.isProd,
   theme: require.resolve('../../'),
   themeConfig: {
-    repo: 'xieyx/vuepress-theme-feed.github.io',
+    repo: 'xieyx/vuepress-theme-feed',
     repoLabel: 'GitHub',
     docsDir: 'docs',
     docsBranch: 'master',
