@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     footer() {
-      return this.$themeConfig.footer;
+      return this.$themeConfig.footer || { copyright: {} };
     }
   }
 }
