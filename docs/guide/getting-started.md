@@ -21,10 +21,15 @@ module.exports = {
 }
 ```
 
-## Feed page
+## Feedpage
 To use it, specify `feed: true` in your `README.md`
 ```yml
 ---
 feed: true
 ---
+```
+
+Excerpt, add `<!-- more -->` in you page
+```md
+<!-- more -->
 ```

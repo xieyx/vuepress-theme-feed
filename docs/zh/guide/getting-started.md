@@ -28,3 +28,8 @@ module.exports = {
 feed: true
 ---
 ```
+
+摘录, 在页面中添加`<!-- more -->`
+```md
+<!-- more -->
+```
